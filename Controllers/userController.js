@@ -48,17 +48,18 @@ const loginUser = async (req,res) =>{
     if(!userExists){
         return res.json('Invalid crendetials')
     }
-    const validPassword = bcrypt.compare(password, user.password)
+    const validPassword = await bcrypt.compare(password, userExists.password)
     if(!validPassword){
         return res.json('Invalid crendentials')
     }
-    const token = jwt.sign({userId:user.id}, process.env.JWT_SECRET,{
+    const token = jwt.sign({userId:userExists.id}, process.env.JWT_SECRET,{
         expiresIn: '1h'
     })
-    res.json({token})
+    return res.json({token})
 }
 
 module.exports = {
   getAllUsers,
   createUser,
+  loginUser
 };
