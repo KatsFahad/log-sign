@@ -6,7 +6,7 @@ const validator = require('../utilis/joi-validate')
 const { userSchema } = require('../utilis/joi-schemas')
 
 
-router.get('/', validateToken, userController.getAllUsers)
+router.get('/', userController.getAllUsers)
 
 router.post('/signup', validator(userSchema), userController.createUser)
 

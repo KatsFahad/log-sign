@@ -13,4 +13,4 @@ const userSchema = Joi.object({
 
   password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{8,15}$")).required(),
 });
-module.exports = userSchema;
+module.exports ={ userSchema };
