@@ -30,6 +30,7 @@ const createUser = async (req, res) => {
         password: hashedPassword,
       },
     });
+    res.json('User created')
   }
   const token = await jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
     expiresIn: "1h",
@@ -39,4 +40,5 @@ const createUser = async (req, res) => {
 
 module.exports = {
   getAllUsers,
+  createUser
 };
